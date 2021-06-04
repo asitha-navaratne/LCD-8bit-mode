@@ -7,8 +7,8 @@
 #define CTRL_DDR	DDRD						///< DDR of LCD control pins.
 #define LCD_PORT	PORTB						///< Port of LCD display pins.
 #define CTRL_PORT	PORTD						///< Port of LCD control pins.
-#define RS 			PD0							///< Pin for LCD Register Select terminal.
-#define EN  		PD1							///< Pin for LCD Enable terminal.
+#define RS 		PD0						///< Pin for LCD Register Select terminal.
+#define EN  		PD1						///< Pin for LCD Enable terminal.
 
 void LCD_DISPLAY_INIT(void);
 void LCD_SEND_COMMAND(unsigned char command);
@@ -31,13 +31,13 @@ int main(void){
 
 void LCD_DISPLAY_INIT(void){
 	LCD_DDR = 0xFF;
-    CTRL_DDR = 0xFF;
+    	CTRL_DDR = 0xFF;
 	
 	LCD_SEND_COMMAND(0x01);						///< Clear LCD screen.
-    LCD_SEND_COMMAND(0x38);						///< 2 line, 5x7 matrix of characters in 8-bit mode.
+    	LCD_SEND_COMMAND(0x38);						///< 2 line, 5x7 matrix of characters in 8-bit mode.
 	LCD_SEND_COMMAND(0x80);						///< Send cursor to beginning of first line.
-    LCD_SEND_COMMAND(0x0E);						///< Turn display and cursor on.
-    _delay_ms(2);
+    	LCD_SEND_COMMAND(0x0E);						///< Turn display and cursor on.
+    	_delay_ms(2);
 }
 
 /*!
@@ -46,12 +46,12 @@ void LCD_DISPLAY_INIT(void){
  */
 
 void LCD_SEND_COMMAND(unsigned char command){
-    LCD_PORT = command;
+    	LCD_PORT = command;
     
 	CTRL_PORT &= ~(1<<RS);						///< Set RS pin low to enter command mode.
-    CTRL_PORT |= (1<<EN);
-    _delay_ms(50);
-    CTRL_PORT &= ~(1<<EN);						///< Create a momentary pulse at EN pin to send the data to the LCD.
+    	CTRL_PORT |= (1<<EN);
+    	_delay_ms(50);
+    	CTRL_PORT &= ~(1<<EN);						///< Create a momentary pulse at EN pin to send the data to the LCD.
 	
 	_delay_ms(2);
 }
@@ -62,12 +62,12 @@ void LCD_SEND_COMMAND(unsigned char command){
  */
 
 void LCD_SEND_CHARACTER(unsigned char character){
-    LCD_PORT = character;
+    	LCD_PORT = character;
     
 	CTRL_PORT |= (1<<RS);						///< Set RS pin high to enter character mode.
-    CTRL_PORT |= (1<<EN);
-    _delay_ms(50);
-    CTRL_PORT &= ~(1<<EN);						///< Create a momentary pulse at EN pin to send the data to the LCD.
+    	CTRL_PORT |= (1<<EN);
+    	_delay_ms(50);
+    	CTRL_PORT &= ~(1<<EN);						///< Create a momentary pulse at EN pin to send the data to the LCD.
 
 	_delay_ms(2);
 }
