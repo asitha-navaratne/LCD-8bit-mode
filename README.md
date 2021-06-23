@@ -7,6 +7,12 @@
 
 <p align="justify">The LCD module has a built-in microcontroller unit within itself which controls what the display does. There are two modes of operation for this microcontroller unit; command mode where any data sent to the module is read as a command, and character mode where any data sent is read as an ASCII character. The mode of operation is changed by changing the logic level at the RS pin of the module; logic LOW to enter command mode and logic HIGH to enter character mode.</p>
 
-<p align="justify">By sending commands to the module's microcontroller unit the module can be made to perform certain functions such as moving the cursor to the second line, clearing the screen, or turning the cursor on or off. The mode of operation (4-bit or 8-bit mode) is specified to the module using commands as well. Usually, before displaying anything on the screen, certain commands have to be sent to the module to "initialize" it by clearing the screen, setting the mode of operation and moving the cursor to the beginning of the first line.</p>
+<p align="justify">By sending commands to the module's microcontroller unit the module can be made to perform certain functions such as moving the cursor about the screen, clearing the screen, or turning the cursor on or off. The mode of operation (4-bit or 8-bit mode) is specified to the module using commands as well. Usually, before displaying anything on the screen, certain commands have to be sent to the module to "initialize" it by clearing the screen, setting the mode of operation and moving the cursor to the beginning of the first line.</p>
 
-<p align="justify">The pins D0 to D7 are used to send data (commands or characters) to the 16x2 LCD module. To send data, the data is first loaded onto the data pins a pulse of certain minimum width must be provided.</p>
+<p align="justify">In character mode, the relevent ASCII character sent to the module will be displayed wherever the cursor is on the screen and the cursor will be incremented by one position.</p>
+
+<p align="justify">The pins D0 to D7 are used to send 8-bit data (commands or characters) to the LCD module. To send any data, the relevant data is first loaded onto the pins D0 to D7. Afterwards, a pulse of certain minimum width must be provided to the E pin of the module for it to "accept" the data.</p>
+
+<p align="justify">The RW pin is used to determine if we want to read from or write to the LCD module's microcontroller unit. Since we will be exclusively writing commands and characters to it, this pin is directly connected to GND. The VEE pin is used to control the contrast of the display by connecting it to a potentiometer. Alternatively, it can be connected through a resistor to GND.</p>
+
+<p align="justify">Some LCD modules have two additional pins, A and K to control the backlight of the display.</p>
