@@ -13,6 +13,6 @@
 
 <p align="justify">The pins D0 to D7 are used to send 8-bit data (commands or characters) to the LCD module. To send any data, the relevant data is first loaded onto the pins D0 to D7. Afterwards, a pulse of certain minimum width must be provided to the E pin of the module for it to "accept" the data.</p>
 
-<p align="justify">The RW pin is used to determine if we want to read from or write to the LCD module's microcontroller unit. Since we will be exclusively writing commands and characters to it, this pin is directly connected to GND. The VEE pin is used to control the contrast of the display by connecting it to a potentiometer. Alternatively, it can be connected through a resistor to GND.</p>
+<p align="justify">The RW pin is used to determine if we want to read from or write to the LCD module's microcontroller unit. Since we will be exclusively writing commands and characters to it, this pin can be directly connected to GND. The VEE pin is used to control the contrast of the display. It can be connected through a potentiometer to GND so that the user can control the contrast as they wish, or it can be connected through a fixed resistor to GND.</p>
 
-<p align="justify">Some LCD modules have two additional pins, A and K to control the backlight of the display.</p>
+<p align="justify">Some LCD modules have two additional pins, A and K to control the backlight of the display. These are connected to VCC and GND respectively, either directly or through a resistor to control the brightness of the backlight. Alternatively, they can be ignored completely to conserve power or if the device is meant to be used in a well lit area where the backlight won't be necessary.</p>
